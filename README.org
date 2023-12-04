@@ -1,0 +1,53 @@
+#+title: Advent of Code 2023
+#+author: Daniel Litvak
+
+* aoc-2023
+** /Daniel Litvak/
+
+Solutions to [[https://adventofcode.com/2023][Advent of Code 2023]]
+
+** DSL
+
+Solutions are defined using the ~defsolution~ macro and run using ~run-solution~.
+
+*** Macro *DEFSOLUTION*
+
+**** Syntax
+
+*defsolution* /(lines &key parser) day part &body body/
+
+**** Arguments and Values
+
+- /lines/ \ndash a symbol, list of lines from the input file
+- /parser/ \ndash a function to convert lines as they are read
+- /day/ \ndash a number
+- /part/ \ndash a number
+- /body/ \ndash body of the function
+
+**** Description
+
+Defines a function that will open a file, read it line by line, optionally
+converting the strings into data using /parser/.
+
+*** Macro *RUN-SOLUTION*
+
+**** Syntax
+
+*run-solution* /day part &optional demo/
+
+**** Arguments and Values
+
+- /day/ \ndash a number
+- /part/ \ndash a number
+- /demo/ \ndash a boolean
+
+**** Description
+
+Runs a solution that has been defined using *defsolution*. It will look for files
+with the following pattern.
+
+- For demo runs: ~<day>-input.txt~
+- For real runs: ~<day>-demo-part.txt~
+
+In case a demo input is used twice, only the file for the first part needs to exist
+
