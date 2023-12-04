@@ -5,8 +5,10 @@
   :author "Your Name <your.name@example.com>"
   :license  "Specify license here"
   :version "0.0.1"
-  :depends-on (:cl-ppcre)
+  :depends-on (:cl-ppcre
+	       :cl-utilities)
   :serial t
   :components ((:file "package")
                (:file "aoc-2023")
-	       (:file "day-01.lisp")))
+	       (:file "day-01")
+	       (:file "day-02")))

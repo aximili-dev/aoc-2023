@@ -29,17 +29,23 @@
 (defun solution-symb (day part)
   (symb 'aoc "-" day "-" part))
 
-(defmacro defsolution ((file-lines) day part &body body)
+(defmacro defsolution ((file-lines &key parser) day part &body body)
   `(defun ,(solution-symb day part) (&optional demo)
 
      (let ((,file-lines '()))
-       (with-open-file (s (input-path ,day ,part demo))
-	 (do ((line (read-line s nil) (read-line s nil)))
-	     ((null line))
-	   (push line ,file-lines))
-	 
-	 (setf ,file-lines (reverse ,file-lines)))
+       (handler-bind ((file-error (lambda (c)
+				    (declare (ignorable c))
+				    (use-value (input-path ,day (1- ,part) demo)))))
+	 (with-open-file (s (input-path ,day ,part demo))
+	   (do ((line (read-line s nil) (read-line s nil)))
+	       ((null line))
+	     (push line ,file-lines))
+	   
+	   (setf ,file-lines (reverse ,file-lines))
 
+	   ,(if parser
+		`(setf ,file-lines (mapcar ,parser ,file-lines)))))
+       
        ,@body)))
 
 (defmacro run-solution (day part &optional demo)
