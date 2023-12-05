@@ -40,12 +40,6 @@
 	(mapcar #'parse-map-line
 	        (subseq map-lines 1))))
 
-(defun merge-map (map-a map-b)
-  "Takes the lists directly"
-  (loop for a in map-a
-	append (destructuring-bind (dest-a source-a length-a) map-a
-		 (destructuring-bind (dest-b source-b length-b) map-b))))
-
 (defun solve-map (n map)
   (or (some (lambda (map-fun)
 	      (funcall map-fun n))
