@@ -31,7 +31,7 @@
 
 (defmacro defsolution ((file-lines &key parser) day part &body body)
   `(defun ,(solution-symb day part) (&optional demo)
-     (declare (optimize (debug 3) (speed 0) (safety 3)))
+     (declare (optimize (debug 3) (speed 0)))
      (let ((,file-lines '()))
        (handler-bind ((file-error (lambda (c)
 				    (declare (ignorable c))
