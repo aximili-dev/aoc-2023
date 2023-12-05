@@ -1,10 +1,5 @@
 (in-package #:aoc-2023)
 
-(defun parse-number-list (numbers)
-  (mapcar #'parse-integer
-	  (split-sequence #\Space numbers
-			  :remove-empty-subseqs t)))
-
 (defun parse-card (line)
   (cl-ppcre:register-groups-bind ((#'parse-number-list winning-numbers my-numbers))
       ("Card +[0-9]+: +((?:\\d+ *)+)\\| +((?:\\d+ *)+)" line)

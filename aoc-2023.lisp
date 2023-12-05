@@ -51,3 +51,8 @@
 (defmacro run-solution (day part &optional demo)
   `(funcall #',(solution-symb day part)
 	    ,demo))
+
+(defun parse-number-list (numbers)
+  (mapcar #'parse-integer
+	  (split-sequence #\Space numbers
+			  :remove-empty-subseqs t)))
