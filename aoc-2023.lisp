@@ -56,3 +56,6 @@
   (mapcar #'parse-integer
 	  (split-sequence #\Space numbers
 			  :remove-empty-subseqs t)))
+
+(defun make-keyword (name)
+  (intern (format nil "~:@(~a~)" name) :keyword))
