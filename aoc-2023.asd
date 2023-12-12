@@ -18,4 +18,6 @@
 	       (:file "day-06")
 	       (:file "day-07")
 	       (:file "day-08")
-	       (:file "day-09")))
+	       (:file "day-09")
+	       (:file "day-10")
+	       (:file "day-11")))
