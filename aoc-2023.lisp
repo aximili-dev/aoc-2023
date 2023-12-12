@@ -52,9 +52,9 @@
   `(funcall #',(solution-symb day part)
 	    ,demo))
 
-(defun parse-number-list (numbers)
+(defun parse-number-list (numbers &key (token #\Space))
   (mapcar #'parse-integer
-	  (split-sequence #\Space numbers
+	  (split-sequence token numbers
 			  :remove-empty-subseqs t)))
 
 (defun make-keyword (name)
